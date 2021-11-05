@@ -1,0 +1,89 @@
+
+% M.Ahmadi 1400/08/14
+% @Tex_Ahmadi
+\documentclass{beamer}
+
+\usetheme{EastLansing}
+
+\usefonttheme{serif}
+\usepackage{xepersian} 
+\settextfont{Yas}
+\raggedleft
+
+\title{حل مشکل متن قرار گرفته بعد محیط لیست}
+\author{مجتبی احمدی}
+\institute{دانشگاه: پیام‌نو‌ر مشگین شهر}
+\date{\today}
+
+\setbeamertemplate{enumerate item}[circle]
+\setbeamertemplate{itemize item}[circle]
+\setbeamertemplate{itemize subitem}[circle]
+
+%+++++++++++++++++++++++++++++++
+% اگر بعد از محیط لیست متن نوشته شود، برعکس مشیه! راه حل
+\let\olditemize=\itemize
+\def\itemize{\vskip0pt\olditemize}
+
+\let\oldenumerate=\enumerate
+\def\enumerate{\vskip0pt\oldenumerate}
+
+\let\olddescription=\description
+\def\description{\vskip0pt\olddescription}
+
+% or 
+%\AtBeginEnvironment{itemize}{\vskip0pt}
+%\AtBeginEnvironment{enumerate}{\vskip0pt}
+%\AtBeginEnvironment{description}{\vskip0pt}
+
+%++++++++++++++++++++++
+
+\begin{document}
+\section{بخش}
+\subsection{زیربخش}
+\begin{frame}
+\begin{itemize}\raggedleft
+\item یک
+\end{itemize}
+سمت راست
+\end{frame}
+
+\begin{frame}
+تست راست
+\begin{description}\raggedleft
+\item[متن]
+تست راست
+\end{description}
+تست راست
+\end{frame}
+
+\begin{frame}
+تست راست
+\begin{itemize}\raggedleft
+\item یک
+\end{itemize}
+تست راست
+\end{frame}
+
+\begin{frame}
+تست راست
+\begin{enumerate}\raggedleft
+\item یک
+\begin{itemize}\raggedleft
+\item دو
+\end{itemize}
+\end{enumerate}
+تست راست
+\end{frame}
+
+\begin{frame}
+\begin{enumerate}\raggedleft
+  \item یک
+    \begin{itemize}\raggedleft
+    \item دو 
+    \item سه
+    \end{itemize}
+تست راست
+\end{enumerate}
+\end{frame}
+
+\end{document}
